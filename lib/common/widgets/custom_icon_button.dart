@@ -10,14 +10,23 @@ class CustomIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      splashRadius: 22.r,
-      onPressed: onTap ?? () {},
-      icon: Image.asset(
-        icon,
-        width: 24.w,
-        height: 24.h,
-      ),
+    return Stack(
+      children: [
+        Container(
+          width: 10,
+          height: 10,
+          color: Colors.red,
+        ),
+        IconButton(
+          splashRadius: 22.r,
+          onPressed: onTap ?? () {},
+          icon: Image.asset(
+            icon,
+            width: 24.w,
+            height: 24.h,
+          ),
+        ),
+      ],
     );
   }
 }
