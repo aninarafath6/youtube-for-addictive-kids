@@ -13,35 +13,39 @@ class CustomChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Align(
+    return Container(
       alignment: Alignment.topCenter,
-      child: InkWell(
-        onTap: onTap,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          padding: EdgeInsets.symmetric(horizontal: 12.w),
-          margin: EdgeInsets.only(right: 8.w),
-          decoration: BoxDecoration(
-            color: isSelected ? AppColors.dark_2 : AppColors.dark_5,
-            borderRadius: BorderRadius.circular(4),
+      margin: EdgeInsets.only(right: 8.w),
+      child: Material(
+        color: isSelected ? AppColors.dark_2 : AppColors.dark_5,
+        borderRadius: BorderRadius.circular(4),
+        child: InkWell(
+          onTap: onTap,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            padding: EdgeInsets.symmetric(horizontal: 12.w),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(4),
+            ),
+            height: 32.h,
+            child: text != null
+                ? Center(
+                    child: Text(
+                      text!,
+                      style: GoogleFonts.roboto(
+                          fontSize: 12.sp,
+                          color:
+                              isSelected ? AppColors.white : AppColors.black),
+                    ),
+                  )
+                : Center(
+                    child: Image.asset(
+                      image!,
+                      width: 20,
+                      height: 20,
+                    ),
+                  ),
           ),
-          height: 32.h,
-          child: text != null
-              ? Center(
-                  child: Text(
-                    text!,
-                    style: GoogleFonts.roboto(
-                        fontSize: 12.sp,
-                        color: isSelected ? AppColors.white : AppColors.black),
-                  ),
-                )
-              : Center(
-                  child: Image.asset(
-                    image!,
-                    width: 20,
-                    height: 20,
-                  ),
-                ),
         ),
       ),
     );

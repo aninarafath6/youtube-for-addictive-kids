@@ -16,6 +16,8 @@ dependencies:
   get: ^4.6.5
   external_app_launcher: ^3.1.0
   google_fonts: ^4.0.3
+  remix: ^0.0.1-dev.1
+  remixicon: ^1.0.0
 
 dev_dependencies:
   flutter_test:
