@@ -1,11 +1,29 @@
 import "package:dummy_youtube/common/constants/image_constant.dart";
+import "package:dummy_youtube/common/widgets/custom_chip.dart";
 import "package:dummy_youtube/common/widgets/custom_icon_button.dart";
+import "package:dummy_youtube/controllers/home_controller.dart";
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
 import "package:flutter_screenutil/flutter_screenutil.dart";
+import "package:get/get.dart";
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
+  static final HomeController _homeController = Get.put(HomeController());
+
+  static List<String> chipList = [
+    "All",
+    "Music",
+    "News",
+    "Gaming",
+    "Comedy",
+    "Kids",
+    "Live",
+    "Reactions",
+    "Trending",
+    "Recently uploaded",
+    "New to you"
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +42,10 @@ class HomeView extends StatelessWidget {
         ),
         actions: [
           const CustomIconButton(icon: AppImages.castIcon),
-          const CustomIconButton(icon: AppImages.notificationIcon),
+          const CustomIconButton(
+            icon: AppImages.notificationIcon,
+            count: "9",
+          ),
           const CustomIconButton(icon: AppImages.searchIcon),
           IconButton(
             onPressed: () {},
@@ -41,7 +62,36 @@ class HomeView extends StatelessWidget {
           ),
           SizedBox(width: 12.w),
         ],
+        toolbarHeight: 100,
         systemOverlayStyle: SystemUiOverlayStyle.dark,
+        bottom: PreferredSize(
+          preferredSize: Size(double.infinity, 10.h),
+          child: SizedBox(
+            height: 55,
+            child: ListView(
+              padding: EdgeInsets.zero,
+              scrollDirection: Axis.horizontal,
+              children: [
+                SizedBox(width: 12.w),
+                const CustomChip(image: AppImages.exploreIcon),
+                ...List.generate(
+                  chipList.length,
+                  (index) => Obx(
+                    () {
+                      return CustomChip(
+                        text: chipList[index],
+                        isSelected:
+                            index == _homeController.selectedIndex.value,
+                        onTap: () => _homeController.onChipSelect(index),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        elevation: 0,
       ),
     );
   }
