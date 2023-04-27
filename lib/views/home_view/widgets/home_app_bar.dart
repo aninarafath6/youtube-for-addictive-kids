@@ -37,6 +37,9 @@ AppBar homeAppBar(BuildContext context) {
         ),
       ],
     ),
+    systemOverlayStyle: const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.white,
+    ),
     actions: [
       const CustomIconButton(icon: AppImages.castIcon),
       const CustomIconButton(
@@ -63,7 +66,7 @@ AppBar homeAppBar(BuildContext context) {
       // SizedBox(width: 12.w),
     ],
     toolbarHeight: 90.h,
-    systemOverlayStyle: SystemUiOverlayStyle.dark,
+    // systemOverlayStyle: SystemUiOverlayStyle.dark,
     bottom: PreferredSize(
       preferredSize: Size(double.infinity, 20.h),
       child: SizedBox(

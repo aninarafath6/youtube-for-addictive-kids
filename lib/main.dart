@@ -8,7 +8,7 @@ import 'package:get/route_manager.dart';
 void main() {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
-      systemNavigationBarColor: AppColors.transparent, // navigation bar color
+      systemNavigationBarColor: AppColors.white, // navigation bar color
       statusBarColor: AppColors.white, // status bar color
     ),
   );

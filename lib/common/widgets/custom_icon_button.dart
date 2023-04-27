@@ -50,7 +50,7 @@ class CustomIconButton extends StatelessWidget {
                   ),
                 ),
               )
-            : SizedBox(),
+            : const SizedBox(),
       ],
     );
   }
